@@ -5,6 +5,11 @@ MAINTAINER WU MUXIAN <wumuxian1988@gmail.com>
 # Run everything below as aerogear user
 USER jboss
 
+# Copy the index.html to set root url point to push server
+WORKDIR /opt/jboss/wildfly/welcome-content
+RUN mv index.html index.html.orig
+COPY index.html index.html
+
 # Switch to the working dir $JBOSS_HOME/standalone/deployments
 WORKDIR /opt/jboss/wildfly/standalone/deployments
 
